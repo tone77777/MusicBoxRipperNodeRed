@@ -1,0 +1,119 @@
+[
+    {
+        "id": "80f7271768d0a884",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "b9b8835fbc740a51",
+        "type": "subflow",
+        "name": "Simplepush Log",
+        "info": "",
+        "category": "",
+        "in": [
+            {
+                "x": 50,
+                "y": 30,
+                "wires": [
+                    {
+                        "id": "561b45df1dd788f0"
+                    }
+                ]
+            }
+        ],
+        "out": [],
+        "env": [],
+        "meta": {},
+        "color": "#DDAA99"
+    },
+    {
+        "id": "a30c69bcdc947526",
+        "type": "global-config",
+        "name": "global-config",
+        "env": []
+    },
+    {
+        "id": "69ddef85da0baa4f",
+        "type": "http request",
+        "z": "b9b8835fbc740a51",
+        "name": "Call simplepush",
+        "method": "GET",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 220,
+        "y": 140,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "561b45df1dd788f0",
+        "type": "function",
+        "z": "b9b8835fbc740a51",
+        "name": "Check and Set variables",
+        "func": "// Retrieve the environment variable simplepushurl\n\nlet simplePushURL = \"https://simplepu.sh/evmxWb\"\n\n// Get title and message from the payload\nlet title = msg.payload.title;\nlet message = msg.payload.message;\n\n// Check if title or message is blank\nif (!title || !message) {\n    node.warn(\"Title or message is blank.\");\n    return null; // Stop further execution\n}\n\n// Construct the URL\nlet url = simplePushURL + `/${title}/${message}`;\n\n// Add the constructed URL to the message\nmsg.url = url;\n\nnode.warn(url)\n\n// Return the modified message\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 250,
+        "y": 80,
+        "wires": [
+            [
+                "69ddef85da0baa4f"
+            ]
+        ]
+    },
+    {
+        "id": "4302765a6918fd2a",
+        "type": "subflow:b9b8835fbc740a51",
+        "z": "80f7271768d0a884",
+        "name": "",
+        "x": 380,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "1d695754435db63d",
+        "type": "inject",
+        "z": "80f7271768d0a884",
+        "name": "",
+        "props": [
+            {
+                "p": "payload.title",
+                "v": "Hello",
+                "vt": "str"
+            },
+            {
+                "p": "payload.message",
+                "v": "",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 290,
+        "y": 180,
+        "wires": [
+            [
+                "4302765a6918fd2a"
+            ]
+        ]
+    }
+]
