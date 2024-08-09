@@ -1,8 +1,15 @@
 [
     {
-        "id": "80f7271768d0a884",
+        "id": "a0345e8ed48c9ebd",
         "type": "tab",
-        "label": "Flow 1",
+        "label": "Ripper",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "4b812f4c954794ab",
+        "type": "tab",
+        "label": "Dashboard",
         "disabled": false,
         "info": "",
         "env": []
@@ -30,10 +37,179 @@
         "color": "#DDAA99"
     },
     {
+        "id": "8188ca3008046acd",
+        "type": "subflow",
+        "name": "Get URL Title",
+        "info": "",
+        "category": "",
+        "in": [
+            {
+                "x": 60,
+                "y": 80,
+                "wires": [
+                    {
+                        "id": "http-request-node"
+                    }
+                ]
+            }
+        ],
+        "out": [
+            {
+                "x": 560,
+                "y": 180,
+                "wires": [
+                    {
+                        "id": "function-node",
+                        "port": 0
+                    }
+                ]
+            }
+        ],
+        "env": [],
+        "meta": {},
+        "color": "#DDAA99"
+    },
+    {
+        "id": "a2d4b0722440f32a",
+        "type": "group",
+        "z": "4b812f4c954794ab",
+        "name": "Variables",
+        "style": {
+            "label": true
+        },
+        "nodes": [
+            "4a50bd8c0edb564f",
+            "17fde43881976a33",
+            "function_node_id",
+            "edae5af67f5a9d8b",
+            "4c8737bef3feec34",
+            "131fccc96a053b6d"
+        ],
+        "x": 174,
+        "y": 179,
+        "w": 752,
+        "h": 162
+    },
+    {
         "id": "a30c69bcdc947526",
         "type": "global-config",
         "name": "global-config",
         "env": []
+    },
+    {
+        "id": "274600caef583545",
+        "type": "ui_tab",
+        "name": "Home",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "78cbb8c3a7ca5488",
+        "type": "ui_base",
+        "theme": {
+            "name": "theme-light",
+            "lightTheme": {
+                "default": "#0094CE",
+                "baseColor": "#0094CE",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": false
+            },
+            "darkTheme": {
+                "default": "#097479",
+                "baseColor": "#097479",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": false
+            },
+            "customTheme": {
+                "name": "Untitled Theme 1",
+                "default": "#4B7930",
+                "baseColor": "#4B7930",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+            },
+            "themeState": {
+                "base-color": {
+                    "default": "#0094CE",
+                    "value": "#0094CE",
+                    "edited": false
+                },
+                "page-titlebar-backgroundColor": {
+                    "value": "#0094CE",
+                    "edited": false
+                },
+                "page-backgroundColor": {
+                    "value": "#fafafa",
+                    "edited": false
+                },
+                "page-sidebar-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-textColor": {
+                    "value": "#1bbfff",
+                    "edited": false
+                },
+                "group-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "widget-textColor": {
+                    "value": "#111111",
+                    "edited": false
+                },
+                "widget-backgroundColor": {
+                    "value": "#0094ce",
+                    "edited": false
+                },
+                "widget-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "base-font": {
+                    "value": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+                }
+            },
+            "angularTheme": {
+                "primary": "indigo",
+                "accents": "blue",
+                "warn": "red",
+                "background": "grey",
+                "palette": "light"
+            }
+        },
+        "site": {
+            "name": "Node-RED Dashboard",
+            "hideToolbar": "false",
+            "allowSwipe": "false",
+            "lockMenu": "false",
+            "allowTempTheme": "true",
+            "dateFormat": "DD/MM/YYYY",
+            "sizes": {
+                "sx": 48,
+                "sy": 48,
+                "gx": 6,
+                "gy": 6,
+                "cx": 6,
+                "cy": 6,
+                "px": 0,
+                "py": 0
+            }
+        }
+    },
+    {
+        "id": "9f1042599466f729",
+        "type": "ui_group",
+        "name": "Ripper",
+        "tab": "274600caef583545",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
     },
     {
         "id": "69ddef85da0baa4f",
@@ -78,28 +254,342 @@
         ]
     },
     {
-        "id": "4302765a6918fd2a",
-        "type": "subflow:b9b8835fbc740a51",
-        "z": "80f7271768d0a884",
+        "id": "http-request-node",
+        "type": "http request",
+        "z": "8188ca3008046acd",
         "name": "",
+        "method": "GET",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 200,
+        "y": 80,
+        "wires": [
+            [
+                "function-node"
+            ]
+        ]
+    },
+    {
+        "id": "function-node",
+        "type": "function",
+        "z": "8188ca3008046acd",
+        "name": "Extract Title",
+        "func": "const html = msg.payload;\nconst titleMatch = html.match(/<title>(.*?)<\\/title>/i); // Case-insensitive matching\nif (titleMatch && titleMatch.length > 1) {\n    msg.title = titleMatch[1];\n} else {\n    msg.title = 'No title found';\n}\nreturn msg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
         "x": 380,
-        "y": 260,
+        "y": 80,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "bce07941712146f5",
+        "type": "function",
+        "z": "a0345e8ed48c9ebd",
+        "name": "Validate Domain",
+        "func": "const validDomains = ['soundcloud', 'mixcloud', 'youtube'];\nconst url = flow.get(\"url\")\n\ntry {\n    // Extract domain from URL\n    const domain = url.split('/')[2];\n\n    if (!validDomains.some(validDomain => domain.includes(validDomain))) {\n        node.warn('Invalid domain: ' + domain);\n        msg.payload = { error: 'Invalid domain. Only soundcloud.com, mixcloud.com, and youtube.com are allowed' };\n        return [null, msg];\n    }\n    msg.url = url;\n    return [msg, null];\n} catch (err) {\n    node.warn('Invalid URL: ' + url);\n    msg.payload = { error: 'Invalid URL' };\n    return [null, msg];\n}",
+        "outputs": 2,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 540,
+        "y": 340,
+        "wires": [
+            [
+                "check-url-node"
+            ],
+            [
+                "b29e1faea5311450",
+                "c32e56b5b1abb976"
+            ]
+        ]
+    },
+    {
+        "id": "c83b3bbd68158cfb",
+        "type": "function",
+        "z": "a0345e8ed48c9ebd",
+        "name": "Set Command: Apply ID3 Tags",
+        "func": "let filePath = flow.get(\"destinationPath\")\n\nlet tags = flow.get(\"tags\")\n\nmsg.payload = `id3v2 --song \"${tags.title}\" --artist \"${tags.artist}\" --album \"${tags.album}\" --genre \"${tags.genre}\" \"${filePath}\"`;\n\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [
+            {
+                "var": "ID3Writer",
+                "module": "node-id3"
+            },
+            {
+                "var": "path",
+                "module": "path"
+            },
+            {
+                "var": "fs",
+                "module": "fs"
+            }
+        ],
+        "x": 590,
+        "y": 820,
+        "wires": [
+            [
+                "813322fe8015a3f0"
+            ]
+        ]
+    },
+    {
+        "id": "b29e1faea5311450",
+        "type": "http response",
+        "z": "a0345e8ed48c9ebd",
+        "name": "Error Response if the domain isn't right",
+        "statusCode": "400",
+        "headers": {},
+        "x": 900,
+        "y": 340,
         "wires": []
     },
     {
-        "id": "1d695754435db63d",
-        "type": "inject",
-        "z": "80f7271768d0a884",
+        "id": "53d317b4e677bcbb",
+        "type": "subflow:8188ca3008046acd",
+        "z": "a0345e8ed48c9ebd",
+        "name": "Get Title from Page",
+        "x": 570,
+        "y": 460,
+        "wires": [
+            [
+                "39ed6c8530ccd902"
+            ]
+        ]
+    },
+    {
+        "id": "set-command",
+        "type": "function",
+        "z": "a0345e8ed48c9ebd",
+        "name": "Set file Path",
+        "func": "\nlet path = global.get(\"extraction_folder\")+global.get(\"default_folder\")\n\nconst filename = msg.title.replace(/[^a-zA-Z0-9-_\\.]/g, '_') + '.mp3';\nconst destinationPath = path + filename;\nflow.set(\"destinationPath\",destinationPath)\nreturn msg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 550,
+        "y": 600,
+        "wires": [
+            [
+                "54b21bf288f9034e",
+                "acb2ae64b7640f02"
+            ]
+        ]
+    },
+    {
+        "id": "log-yt-dlp-output",
+        "type": "debug",
+        "z": "a0345e8ed48c9ebd",
+        "name": "yt-dlp Output",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 840,
+        "y": 700,
+        "wires": []
+    },
+    {
+        "id": "log-yt-dlp-error",
+        "type": "debug",
+        "z": "a0345e8ed48c9ebd",
+        "name": "yt-dlp Error",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 830,
+        "y": 740,
+        "wires": []
+    },
+    {
+        "id": "f69fb7e4538caae7",
+        "type": "exec",
+        "z": "a0345e8ed48c9ebd",
+        "command": "",
+        "addpay": "payload",
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "winHide": false,
+        "oldrc": false,
+        "name": "Execute Command",
+        "x": 570,
+        "y": 700,
+        "wires": [
+            [
+                "log-yt-dlp-output"
+            ],
+            [
+                "log-yt-dlp-error"
+            ],
+            [
+                "a34756d5c622da58"
+            ]
+        ]
+    },
+    {
+        "id": "813322fe8015a3f0",
+        "type": "exec",
+        "z": "a0345e8ed48c9ebd",
+        "command": "",
+        "addpay": "payload",
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "winHide": false,
+        "oldrc": false,
+        "name": "Execute Command",
+        "x": 550,
+        "y": 880,
+        "wires": [
+            [
+                "3e6680c19289f36b"
+            ],
+            [
+                "78a449b93b116d51"
+            ],
+            [
+                "1fcafb12823c51c7",
+                "2e7ee97c5f9a4329"
+            ]
+        ]
+    },
+    {
+        "id": "3e6680c19289f36b",
+        "type": "debug",
+        "z": "a0345e8ed48c9ebd",
+        "name": "debug 1",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 820,
+        "y": 880,
+        "wires": []
+    },
+    {
+        "id": "78a449b93b116d51",
+        "type": "debug",
+        "z": "a0345e8ed48c9ebd",
+        "name": "debug 2",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 820,
+        "y": 920,
+        "wires": []
+    },
+    {
+        "id": "1fcafb12823c51c7",
+        "type": "debug",
+        "z": "a0345e8ed48c9ebd",
+        "name": "debug 3",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 820,
+        "y": 960,
+        "wires": []
+    },
+    {
+        "id": "8fbc0438eb34e396",
+        "type": "subflow:b9b8835fbc740a51",
+        "z": "a0345e8ed48c9ebd",
         "name": "",
+        "x": 1020,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "c32e56b5b1abb976",
+        "type": "change",
+        "z": "a0345e8ed48c9ebd",
+        "name": "Log the error if the domain isn't right",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload.title",
+                "pt": "msg",
+                "to": "Invalid URL",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "payload.message",
+                "pt": "msg",
+                "to": "Must be Mixcloud, Soundcloud or Youtube",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 970,
+        "y": 240,
+        "wires": [
+            [
+                "8fbc0438eb34e396"
+            ]
+        ]
+    },
+    {
+        "id": "44ebbaa3e6653b05",
+        "type": "inject",
+        "z": "a0345e8ed48c9ebd",
+        "name": "Test invalid url",
         "props": [
             {
-                "p": "payload.title",
-                "v": "Hello",
+                "p": "payload.url",
+                "v": "dfagagf",
                 "vt": "str"
             },
             {
-                "p": "payload.message",
-                "v": "",
+                "p": "topic",
                 "vt": "str"
             }
         ],
@@ -108,12 +598,755 @@
         "once": false,
         "onceDelay": 0.1,
         "topic": "",
-        "x": 290,
+        "x": 310,
+        "y": 140,
+        "wires": [
+            [
+                "386cf83de34d2285"
+            ]
+        ]
+    },
+    {
+        "id": "2e7ee97c5f9a4329",
+        "type": "fs-ops-access",
+        "z": "a0345e8ed48c9ebd",
+        "name": "",
+        "path": "",
+        "pathType": "str",
+        "filename": "destinationPath",
+        "filenameType": "flow",
+        "read": true,
+        "write": true,
+        "throwerror": true,
+        "x": 650,
+        "y": 1040,
+        "wires": [
+            [
+                "90c7e480e6cc13a4"
+            ],
+            [
+                "d0d6207612739213"
+            ]
+        ]
+    },
+    {
+        "id": "90c7e480e6cc13a4",
+        "type": "change",
+        "z": "a0345e8ed48c9ebd",
+        "name": "Set log message",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload.title",
+                "pt": "msg",
+                "to": "Success!",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "payload.message",
+                "pt": "msg",
+                "to": "$flowContext(\"title\") & \":  The file has been extracted and exists\"",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1010,
+        "y": 1020,
+        "wires": [
+            [
+                "bb6a1e19adca27c2"
+            ]
+        ]
+    },
+    {
+        "id": "bb6a1e19adca27c2",
+        "type": "subflow:b9b8835fbc740a51",
+        "z": "a0345e8ed48c9ebd",
+        "name": "",
+        "x": 1240,
+        "y": 1040,
+        "wires": []
+    },
+    {
+        "id": "d0d6207612739213",
+        "type": "change",
+        "z": "a0345e8ed48c9ebd",
+        "name": "Set log message",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload.title",
+                "pt": "msg",
+                "to": "Fail!",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "payload.message",
+                "pt": "msg",
+                "to": "$flowContext(\"title\") & \":  The extraction has failed\"",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1010,
+        "y": 1060,
+        "wires": [
+            [
+                "bb6a1e19adca27c2"
+            ]
+        ]
+    },
+    {
+        "id": "7035fa36baa3253c",
+        "type": "http in",
+        "z": "a0345e8ed48c9ebd",
+        "name": "Rip Audio in point",
+        "url": "/rip_audio",
+        "method": "post",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 550,
+        "y": 40,
+        "wires": [
+            [
+                "d966f8d60f6a3a87",
+                "3f5c4097f8469b43",
+                "386cf83de34d2285"
+            ]
+        ]
+    },
+    {
+        "id": "d966f8d60f6a3a87",
+        "type": "debug",
+        "z": "a0345e8ed48c9ebd",
+        "name": "Show what came through from the post request",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 920,
+        "y": 40,
+        "wires": []
+    },
+    {
+        "id": "54b21bf288f9034e",
+        "type": "function",
+        "z": "a0345e8ed48c9ebd",
+        "name": "Set Command: Extract audio",
+        "func": "\nlet destinationPath = flow.get(\"destinationPath\")\nmsg.payload = `yt-dlp -x -o \"${destinationPath}\" --audio-format mp3 \"${msg.url}\"`\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 600,
+        "y": 640,
+        "wires": [
+            [
+                "f69fb7e4538caae7"
+            ]
+        ]
+    },
+    {
+        "id": "71b7baf362754cfa",
+        "type": "change",
+        "z": "a0345e8ed48c9ebd",
+        "name": "Set variables",
+        "rules": [
+            {
+                "t": "set",
+                "p": "id3Artist",
+                "pt": "flow",
+                "to": "payload.id3Artist",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "id3Album",
+                "pt": "flow",
+                "to": "payload.id3Album",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "id3Genre",
+                "pt": "flow",
+                "to": "payload.id3Genre",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 530,
+        "y": 220,
+        "wires": [
+            [
+                "081179c086dc8741"
+            ]
+        ]
+    },
+    {
+        "id": "00cacf45e94a9342",
+        "type": "comment",
+        "z": "a0345e8ed48c9ebd",
+        "name": "",
+        "info": "",
+        "x": 1100,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "3f5c4097f8469b43",
+        "type": "function",
+        "z": "a0345e8ed48c9ebd",
+        "name": "Process POST Request",
+        "func": "msg.payload = { success: true, message: 'Ripping started!'};\nreturn msg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 790,
+        "y": 120,
+        "wires": [
+            [
+                "fc1423fc675f7a46"
+            ]
+        ]
+    },
+    {
+        "id": "fc1423fc675f7a46",
+        "type": "http response",
+        "z": "a0345e8ed48c9ebd",
+        "name": "Send \"started success\" message",
+        "statusCode": "",
+        "headers": {},
+        "x": 1080,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "check-url-node",
+        "type": "function",
+        "z": "a0345e8ed48c9ebd",
+        "name": "Is this MixCloud?",
+        "func": "const url = flow.get(\"url\")\n\nif (url && url.includes('mixcloud')) {\n    return [null, msg];\n   \n} else {\n     return [msg, null];\n}",
+        "outputs": 2,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 550,
+        "y": 400,
+        "wires": [
+            [
+                "53d317b4e677bcbb"
+            ],
+            [
+                "a42bda5209ad9918"
+            ]
+        ]
+    },
+    {
+        "id": "a42bda5209ad9918",
+        "type": "function",
+        "z": "a0345e8ed48c9ebd",
+        "name": "Get Title from URL",
+        "func": "// Extract the filename part of the URL\nlet url = flow.get(\"url\");\nurl = url.replace(/\\/$/, '');\n\n// Extract the filename part of the URL\nlet filename = url.substring(url.lastIndexOf('/') + 1);\n\n// Convert the filename to title case\nfunction toTitleCase(str) {\n    return str.replace(/\\w\\S*/g, function(txt) {\n        return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();\n    });\n}\n\nlet titleCaseFilename = toTitleCase(filename);\n\n// Set the result back into the message payload\nmsg.title = titleCaseFilename;\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 850,
+        "y": 460,
+        "wires": [
+            [
+                "39ed6c8530ccd902"
+            ]
+        ]
+    },
+    {
+        "id": "39ed6c8530ccd902",
+        "type": "function",
+        "z": "a0345e8ed48c9ebd",
+        "name": "Debug the title and set as a flow variable",
+        "func": "node.warn(\"Title to be created = \" + msg.title)\nflow.set(\"title\", msg.title)\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 640,
+        "y": 540,
+        "wires": [
+            [
+                "set-command"
+            ]
+        ]
+    },
+    {
+        "id": "fcb4219ca3dc4796",
+        "type": "inject",
+        "z": "a0345e8ed48c9ebd",
+        "name": "Test MixCloud",
+        "props": [
+            {
+                "p": "payload.url",
+                "v": "https://www.mixcloud.com/antoniogould/mini-mix-1/",
+                "vt": "str"
+            },
+            {
+                "p": "payload.id3Artist",
+                "v": "MixMaster",
+                "vt": "str"
+            },
+            {
+                "p": "payload.id3Album",
+                "v": "My Mixes",
+                "vt": "str"
+            },
+            {
+                "p": "payload.id3Genre",
+                "v": "Mix",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 310,
+        "y": 100,
+        "wires": [
+            [
+                "386cf83de34d2285"
+            ]
+        ]
+    },
+    {
+        "id": "081179c086dc8741",
+        "type": "function",
+        "z": "a0345e8ed48c9ebd",
+        "name": "Set the URL up as a flow variable",
+        "func": "flow.set(\"url\", msg.payload.url);\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 600,
+        "y": 280,
+        "wires": [
+            [
+                "bce07941712146f5"
+            ]
+        ]
+    },
+    {
+        "id": "86a50cd40e18060c",
+        "type": "subflow:b9b8835fbc740a51",
+        "z": "a0345e8ed48c9ebd",
+        "name": "",
+        "x": 1240,
+        "y": 620,
+        "wires": []
+    },
+    {
+        "id": "70a2566529769b29",
+        "type": "change",
+        "z": "a0345e8ed48c9ebd",
+        "name": "Log that extraction has started",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload.title",
+                "pt": "msg",
+                "to": "\": Extraction Started\" & $flowContext(\"title\") ",
+                "tot": "jsonata"
+            },
+            {
+                "t": "set",
+                "p": "payload.message",
+                "pt": "msg",
+                "to": "Back with you shortly..",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 990,
+        "y": 620,
+        "wires": [
+            [
+                "86a50cd40e18060c"
+            ]
+        ]
+    },
+    {
+        "id": "1dc6c31a74e33c6e",
+        "type": "subflow:b9b8835fbc740a51",
+        "z": "a0345e8ed48c9ebd",
+        "name": "",
+        "x": 1160,
+        "y": 800,
+        "wires": []
+    },
+    {
+        "id": "acb2ae64b7640f02",
+        "type": "change",
+        "z": "a0345e8ed48c9ebd",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{}",
+                "tot": "json"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 760,
+        "y": 600,
+        "wires": [
+            [
+                "70a2566529769b29"
+            ]
+        ]
+    },
+    {
+        "id": "a34756d5c622da58",
+        "type": "function",
+        "z": "a0345e8ed48c9ebd",
+        "name": "Set Tags as a flow variable",
+        "func": "const tags = {\n    title: msg.title,\n    artist: 'Mixmaster',\n    album: 'My Mixes',\n    genre: 'Mix'\n};\n\nflow.set(\"tags\",tags )\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 580,
+        "y": 760,
+        "wires": [
+            [
+                "c83b3bbd68158cfb",
+                "8f700e91248ad9bc"
+            ]
+        ]
+    },
+    {
+        "id": "8f700e91248ad9bc",
+        "type": "function",
+        "z": "a0345e8ed48c9ebd",
+        "name": "Set up tags message",
+        "func": "let tags = flow.get(\"tags\")\nmsg.payload.title = flow.title = \"& Adding tags\"\nmsg.payload.message = `Title: \"${tags.title}\" Artist: \"${tags.artist}\" --album \"${tags.album}\" Genre: \"${tags.genre}\"`;\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 900,
+        "y": 800,
+        "wires": [
+            [
+                "1dc6c31a74e33c6e"
+            ]
+        ]
+    },
+    {
+        "id": "6145559658304edc",
+        "type": "inject",
+        "z": "a0345e8ed48c9ebd",
+        "name": "Test Small Youtube",
+        "props": [
+            {
+                "p": "payload.url",
+                "v": "https://www.youtube.com/watch?v=lfuX77fkLhI",
+                "vt": "str"
+            },
+            {
+                "p": "payload.id3Artist",
+                "v": "MixMaster",
+                "vt": "str"
+            },
+            {
+                "p": "payload.id3Album",
+                "v": "My Mixes",
+                "vt": "str"
+            },
+            {
+                "p": "payload.id3Genre",
+                "v": "Mix",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 330,
+        "y": 60,
+        "wires": [
+            [
+                "386cf83de34d2285"
+            ]
+        ]
+    },
+    {
+        "id": "2bec417dba176ea8",
+        "type": "change",
+        "z": "a0345e8ed48c9ebd",
+        "name": "Log the error if thre aren't the right id3 tags",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload.title",
+                "pt": "msg",
+                "to": "No tags supplied",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "payload.message",
+                "pt": "msg",
+                "to": "$flowContext(\"title\") & \": Please put them in - id3artist, id3genre and id3album\"",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 890,
         "y": 180,
         "wires": [
             [
-                "4302765a6918fd2a"
+                "2b57c890efbbd107"
             ]
+        ]
+    },
+    {
+        "id": "386cf83de34d2285",
+        "type": "function",
+        "z": "a0345e8ed48c9ebd",
+        "name": "Validate Tags",
+        "func": "\n// Check if any of the required properties are blank, null, or undefined\nif (!msg.payload.id3Artist || !msg.payload.id3Album || !msg.payload.id3Genre) {\n    // If any of the fields are blank, send the message to output 1\n     return [null, msg];\n} else {\n    // If all fields are filled, send the message to output 2\n   return [msg, null];\n}\n",
+        "outputs": 2,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 530,
+        "y": 160,
+        "wires": [
+            [
+                "71b7baf362754cfa"
+            ],
+            [
+                "2bec417dba176ea8"
+            ]
+        ]
+    },
+    {
+        "id": "2b57c890efbbd107",
+        "type": "subflow:b9b8835fbc740a51",
+        "z": "a0345e8ed48c9ebd",
+        "name": "",
+        "x": 1200,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "fbea022d0674bf7d",
+        "type": "link in",
+        "z": "a0345e8ed48c9ebd",
+        "name": "link in 1",
+        "links": [],
+        "x": 215,
+        "y": 320,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "4a50bd8c0edb564f",
+        "type": "inject",
+        "z": "4b812f4c954794ab",
+        "g": "a2d4b0722440f32a",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "1",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "extraction_folder",
+        "payloadType": "global",
+        "x": 330,
+        "y": 220,
+        "wires": [
+            [
+                "17fde43881976a33"
+            ]
+        ]
+    },
+    {
+        "id": "17fde43881976a33",
+        "type": "ui_text_input",
+        "z": "4b812f4c954794ab",
+        "g": "a2d4b0722440f32a",
+        "name": "File path",
+        "label": "Root File Path",
+        "tooltip": "",
+        "group": "9f1042599466f729",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "mode": "text",
+        "delay": 300,
+        "topic": "topic",
+        "sendOnBlur": true,
+        "className": "",
+        "topicType": "msg",
+        "x": 560,
+        "y": 220,
+        "wires": [
+            [
+                "function_node_id"
+            ]
+        ]
+    },
+    {
+        "id": "function_node_id",
+        "type": "function",
+        "z": "4b812f4c954794ab",
+        "g": "a2d4b0722440f32a",
+        "name": "Update Global Variable",
+        "func": "global.set(\"extraction_folder\", msg.payload);\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 790,
+        "y": 220,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "edae5af67f5a9d8b",
+        "type": "inject",
+        "z": "4b812f4c954794ab",
+        "g": "a2d4b0722440f32a",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "1",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "default_folder",
+        "payloadType": "global",
+        "x": 320,
+        "y": 300,
+        "wires": [
+            [
+                "4c8737bef3feec34"
+            ]
+        ]
+    },
+    {
+        "id": "4c8737bef3feec34",
+        "type": "ui_text_input",
+        "z": "4b812f4c954794ab",
+        "g": "a2d4b0722440f32a",
+        "name": "Default folder",
+        "label": "Default Path",
+        "tooltip": "",
+        "group": "9f1042599466f729",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "mode": "text",
+        "delay": 300,
+        "topic": "topic",
+        "sendOnBlur": true,
+        "className": "",
+        "topicType": "msg",
+        "x": 560,
+        "y": 300,
+        "wires": [
+            [
+                "131fccc96a053b6d"
+            ]
+        ]
+    },
+    {
+        "id": "131fccc96a053b6d",
+        "type": "function",
+        "z": "4b812f4c954794ab",
+        "g": "a2d4b0722440f32a",
+        "name": "Update Global Variable",
+        "func": "global.set(\"default_folder\", msg.payload);\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 790,
+        "y": 300,
+        "wires": [
+            []
         ]
     }
 ]
